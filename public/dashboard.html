@@ -207,11 +207,11 @@
 
         logoutBtn.addEventListener('click', async () => {
             await signOut(auth);
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
         });
 
         onAuthStateChanged(auth, async (user) => {
-            if (!user) return window.location.href = 'login.html';
+            if (!user) return window.location.href = 'index.html';
             const q = query(collection(db, 'bookings'), where('ownerId', '==', user.uid));
             const snapshot = await getDocs(q);
             snapshot.forEach(doc => allBookings.push({ ...doc.data() }));
